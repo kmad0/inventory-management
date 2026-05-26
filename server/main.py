@@ -5,9 +5,11 @@ from pydantic import BaseModel
 from datetime import datetime, timedelta
 from mock_data import inventory_items, orders, demand_forecasts, backlog_items, spending_summary, monthly_spending, category_spending, recent_transactions, purchase_orders
 
-# In-memory store for submitted restocking orders (cleared on restart)
+# In-memory stores (cleared on restart)
 restocking_orders: list = []
 _restocking_counter = [0]
+_tasks: list = []
+_task_counter = [0]
 
 app = FastAPI(title="Factory Inventory Management System")
 
@@ -389,6 +391,45 @@ def submit_restocking_order(request: SubmitRestockingOrderRequest):
 def get_submitted_restocking_orders():
     """Return all submitted restocking orders (newest first)."""
     return list(reversed(restocking_orders))
+
+class Task(BaseModel):
+    id: int
+    title: str
+    priority: str
+    dueDate: Optional[str] = None
+    status: str = "pending"
+
+class CreateTaskRequest(BaseModel):
+    title: str
+    priority: str = "medium"
+    dueDate: Optional[str] = None
+
+@app.get("/api/tasks", response_model=List[Task])
+def get_tasks():
+    return list(_tasks)
+
+@app.post("/api/tasks", response_model=Task, status_code=201)
+def create_task(req: CreateTaskRequest):
+    _task_counter[0] += 1
+    task = {"id": _task_counter[0], "title": req.title, "priority": req.priority, "dueDate": req.dueDate, "status": "pending"}
+    _tasks.append(task)
+    return task
+
+@app.delete("/api/tasks/{task_id}")
+def delete_task(task_id: int):
+    task = next((t for t in _tasks if t["id"] == task_id), None)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    _tasks.remove(task)
+    return {"ok": True}
+
+@app.patch("/api/tasks/{task_id}", response_model=Task)
+def toggle_task(task_id: int):
+    task = next((t for t in _tasks if t["id"] == task_id), None)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    task["status"] = "completed" if task["status"] == "pending" else "pending"
+    return task
 
 if __name__ == "__main__":
     import uvicorn
