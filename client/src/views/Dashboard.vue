@@ -736,7 +736,7 @@ export default {
 
 .header-meta {
   font-size: 0.813rem;
-  color: #64748b;
+  color: #7090b0;
 }
 
 .kpi-section {
@@ -746,7 +746,7 @@ export default {
 .section-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #475569;
+  color: #7090b0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
@@ -759,8 +759,8 @@ export default {
 }
 
 .kpi-card {
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #0d1117;
+  border: 1px solid #1a2744;
   border-radius: 10px;
   padding: 1rem;
 }
@@ -772,7 +772,7 @@ export default {
 .kpi-label {
   font-size: 0.813rem;
   font-weight: 600;
-  color: #64748b;
+  color: #7090b0;
   text-transform: uppercase;
   letter-spacing: 0.025em;
 }
@@ -780,34 +780,36 @@ export default {
 .kpi-value {
   font-size: 2rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #e0f0ff;
   margin-bottom: 0.5rem;
   letter-spacing: -0.025em;
 }
 
 .kpi-goal {
   font-size: 0.813rem;
-  color: #64748b;
+  color: #7090b0;
   margin-bottom: 0.75rem;
 }
 
 .kpi-progress-bar {
   width: 100%;
   height: 6px;
-  background: #f1f5f9;
+  background: #1a2744;
   border-radius: 3px;
   overflow: hidden;
 }
 
 .kpi-progress {
   height: 100%;
-  background: #3b82f6;
+  background: linear-gradient(90deg, #00f5ff 0%, #00c8ff 100%);
   border-radius: 3px;
   transition: width 0.6s ease;
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
 }
 
 .kpi-progress.success {
-  background: #10b981;
+  background: linear-gradient(90deg, #00ff9d 0%, #00cc7a 100%);
+  box-shadow: 0 0 8px rgba(0, 255, 157, 0.5);
 }
 
 .charts-grid {
@@ -848,7 +850,7 @@ export default {
   align-items: center;
   gap: 0.625rem;
   font-size: 0.875rem;
-  color: #475569;
+  color: #7090b0;
 }
 
 .legend-dot {
@@ -883,7 +885,7 @@ export default {
 
 .donut-center-label {
   font-size: 12px;
-  fill: #64748b;
+  fill: #7090b0;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -891,7 +893,7 @@ export default {
 
 .donut-center-value {
   font-size: 36px;
-  fill: #0f172a;
+  fill: #e0f0ff;
   font-weight: 700;
 }
 
@@ -906,7 +908,7 @@ export default {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
-  color: #475569;
+  color: #7090b0;
   font-weight: 500;
 }
 
@@ -928,7 +930,7 @@ export default {
 
 .health-metric-label {
   font-size: 0.688rem;
-  color: #64748b;
+  color: #7090b0;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -937,20 +939,20 @@ export default {
 .health-metric-value {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #e0f0ff;
   letter-spacing: -0.025em;
 }
 
 .metric-good {
-  color: #10b981;
+  color: #00ff9d;
 }
 
 .metric-warning {
-  color: #f59e0b;
+  color: #ffe600;
 }
 
 .metric-bad {
-  color: #ef4444;
+  color: #ff2d78;
 }
 
 .horizontal-bar-chart {
@@ -971,14 +973,14 @@ export default {
   min-width: 120px;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #475569;
+  color: #7090b0;
   flex-shrink: 0;
 }
 
 .h-bar-container {
   flex: 1;
   height: 32px;
-  background: #f8fafc;
+  background: #080d14;
   border-radius: 6px;
   overflow: hidden;
 }
@@ -995,7 +997,7 @@ export default {
 .h-bar-value {
   font-size: 0.813rem;
   font-weight: 700;
-  color: white;
+  color: #e0f0ff;
 }
 
 .line-chart {
@@ -1010,8 +1012,8 @@ export default {
   justify-content: space-between;
   padding-right: 1rem;
   font-size: 0.75rem;
-  color: #94a3b8;
-  border-right: 1px solid #e2e8f0;
+  color: #7090b0;
+  border-right: 1px solid #1a2744;
 }
 
 .line-chart-area {
@@ -1044,40 +1046,43 @@ export default {
   width: 100%;
   max-width: 60px;
   min-height: 8px;
-  background: #3b82f6;
+  background: #00f5ff;
   border-radius: 6px 6px 0 0;
   transition: all 0.3s ease;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.4);
+  filter: drop-shadow(0 0 4px rgba(0, 245, 255, 0.6));
 }
 
 .line-bar.empty-bar {
-  background: #e2e8f0;
+  background: #1a2744;
   box-shadow: none;
+  filter: none;
   min-height: 4px;
 }
 
 .line-bar:hover {
-  background: #2563eb;
+  background: #00c8ff;
   transform: scaleY(1.05);
+  box-shadow: 0 0 16px rgba(0, 245, 255, 0.6);
 }
 
 .line-bar.empty-bar:hover {
-  background: #cbd5e1;
+  background: #243860;
   transform: none;
 }
 
 .line-bar-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #64748b;
+  color: #7090b0;
   white-space: nowrap;
 }
 
 .no-data {
   padding: 2rem;
   text-align: center;
-  color: #94a3b8;
+  color: #7090b0;
   font-size: 0.875rem;
 }
 
@@ -1093,12 +1098,12 @@ export default {
 .success-icon {
   width: 48px;
   height: 48px;
-  color: #10b981;
+  color: #00ff9d;
 }
 
 .no-backlog-text {
   font-size: 1.125rem;
-  color: #10b981;
+  color: #00ff9d;
   font-weight: 600;
   margin: 0;
 }
@@ -1109,7 +1114,7 @@ export default {
 }
 
 .clickable-row:hover {
-  background: #eff6ff !important;
+  background: rgba(0, 245, 255, 0.05) !important;
 }
 
 /* Tasks Card Styles */
@@ -1130,21 +1135,23 @@ export default {
 .task-input {
   flex: 1;
   padding: 0.75rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #1a2744;
   border-radius: 8px;
   font-size: 0.95rem;
   transition: border-color 0.2s ease;
+  background: #080d14;
+  color: #e0f0ff;
 }
 
 .task-input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #00f5ff;
 }
 
 .task-add-btn {
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #00f5ff 0%, #b44fff 100%);
+  color: #0d1117;
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -1164,7 +1171,7 @@ export default {
 .no-tasks {
   text-align: center;
   padding: 2rem;
-  color: #64748b;
+  color: #7090b0;
   font-style: italic;
 }
 
@@ -1179,15 +1186,15 @@ export default {
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: #f8fafc;
+  background: #080d14;
   border-radius: 8px;
   border: 2px solid transparent;
   transition: all 0.2s ease;
 }
 
 .task-item:hover {
-  border-color: #e2e8f0;
-  background: white;
+  border-color: #1a2744;
+  background: #0d1117;
 }
 
 .task-item.completed {
@@ -1196,28 +1203,28 @@ export default {
 
 .task-item.completed .task-text {
   text-decoration: line-through;
-  color: #94a3b8;
+  color: #7090b0;
 }
 
 .task-checkbox {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  accent-color: #667eea;
+  accent-color: #00f5ff;
 }
 
 .task-text {
   flex: 1;
   cursor: pointer;
   user-select: none;
-  color: #0f172a;
+  color: #e0f0ff;
   font-size: 0.95rem;
 }
 
 .task-delete-btn {
   width: 28px;
   height: 28px;
-  background: #ef4444;
+  background: #ff2d78;
   color: white;
   border: none;
   border-radius: 6px;
@@ -1232,8 +1239,9 @@ export default {
 }
 
 .task-delete-btn:hover {
-  background: #dc2626;
+  background: #e0005c;
   transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(255, 45, 120, 0.5);
 }
 
 .po-button {
@@ -1248,24 +1256,24 @@ export default {
 }
 
 .po-button.create {
-  background: #3b82f6;
-  color: white;
+  background: #00f5ff;
+  color: #0d1117;
 }
 
 .po-button.create:hover {
-  background: #2563eb;
+  background: #00c8ff;
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.5);
 }
 
 .po-button.view {
-  background: #64748b;
-  color: white;
+  background: #243860;
+  color: #e0f0ff;
 }
 
 .po-button.view:hover {
-  background: #475569;
+  background: #1a2744;
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(100, 116, 139, 0.3);
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.2);
 }
 </style>

@@ -102,8 +102,8 @@ export default {
 
 <style scoped>
 .filters-bar {
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
   padding: 0.75rem 0;
   position: sticky;
   top: 70px;
@@ -135,31 +135,41 @@ export default {
 .filter-group label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #64748b;
+  color: var(--text-secondary);
   white-space: nowrap;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .filter-select {
   padding: 0.4rem 0.75rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border-mid);
   border-radius: 6px;
   font-size: 0.813rem;
-  color: #0f172a;
-  background: white;
+  color: var(--text-primary);
+  background: var(--surface-alt);
   cursor: pointer;
   transition: all 0.2s;
   font-weight: 500;
   min-width: 140px;
+  /* Ensure native select arrow is visible against dark bg */
+  appearance: auto;
 }
 
 .filter-select:hover {
-  border-color: #94a3b8;
+  border-color: var(--neon-cyan);
 }
 
 .filter-select:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.3);
+}
+
+/* Style option elements for browsers that support it */
+.filter-select option {
+  background: var(--surface-alt);
+  color: var(--text-primary);
 }
 
 .reset-filters-btn {
@@ -167,24 +177,26 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0.4rem;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: transparent;
+  border: 1px solid var(--neon-pink);
   border-radius: 6px;
-  color: #64748b;
+  color: var(--neon-pink);
   cursor: pointer;
   transition: all 0.2s;
   flex-shrink: 0;
 }
 
 .reset-filters-btn:hover:not(:disabled) {
-  background: #f8fafc;
-  border-color: #cbd5e1;
-  color: #0f172a;
+  background: rgba(255, 45, 120, 0.1);
+  box-shadow: 0 0 8px rgba(255, 45, 120, 0.3);
 }
 
 .reset-filters-btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+  /* Mute the neon border when disabled */
+  border-color: var(--border-mid);
+  color: var(--text-secondary);
 }
 
 .reset-filters-btn svg {

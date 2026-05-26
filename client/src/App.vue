@@ -256,6 +256,35 @@ export default {
 </script>
 
 <style>
+/* =============================================
+   Cyberpunk 2050 — CSS Custom Properties
+   ============================================= */
+:root {
+  --bg: #050714;
+  --surface: #0d1117;
+  --surface-alt: #080d14;
+  --border: #1a2744;
+  --border-soft: #0d1a2e;
+  --border-mid: #243860;
+  --text-primary: #e0f0ff;
+  --text-secondary: #7090b0;
+  --text-body: #a0b8d0;
+  --text-muted: #506880;
+  --neon-cyan: #00f5ff;
+  --neon-pink: #ff2d78;
+  --neon-purple: #b44fff;
+  --neon-green: #00ff9d;
+  --neon-yellow: #ffe600;
+  --nav-hover-bg: #0d1e38;
+  --nav-active-bg: #001a33;
+  --nav-active-color: #00f5ff;
+  --shadow-sm: 0 0 10px rgba(0, 245, 255, 0.08);
+  --shadow-card: 0 0 20px rgba(0, 245, 255, 0.12);
+  --toggle-bg: #0d1e38;
+  --toggle-color: #7090b0;
+  --toggle-hover-bg: #1a2e50;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -263,9 +292,9 @@ export default {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: #f8fafc;
-  color: #1e293b;
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+  background: var(--bg);
+  color: var(--text-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -282,8 +311,9 @@ body {
   top: 0;
   z-index: 200;
   height: 60px;
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -306,16 +336,17 @@ body {
 .logo h1 {
   font-size: 1.375rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--neon-cyan);
   letter-spacing: -0.025em;
+  text-shadow: 0 0 20px rgba(0, 245, 255, 0.7);
 }
 
 .subtitle {
   font-size: 0.813rem;
-  color: #64748b;
+  color: var(--text-secondary);
   font-weight: 400;
   padding-left: 0.75rem;
-  border-left: 1px solid #e2e8f0;
+  border-left: 1px solid var(--border-mid);
 }
 
 /* App body: sidebar + content */
@@ -331,8 +362,8 @@ body {
   top: 60px;
   height: calc(100vh - 60px);
   overflow: hidden;
-  background: #ffffff;
-  border-right: 1px solid #e2e8f0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
   width: 220px;
   flex-shrink: 0;
   transition: width 0.25s ease;
@@ -356,7 +387,7 @@ body {
   align-items: center;
   gap: 0.75rem;
   padding: 0.625rem 1rem;
-  color: #64748b;
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
@@ -368,13 +399,14 @@ body {
 }
 
 .nav-item:hover {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: var(--nav-hover-bg);
+  color: var(--neon-cyan);
 }
 
 .nav-item.active {
-  background: #eff6ff;
-  color: #2563eb;
+  background: var(--nav-active-bg);
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
 }
 
 .nav-item svg {
@@ -403,14 +435,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  color: #94a3b8;
-  border-top: 1px solid #e2e8f0;
+  color: var(--toggle-color);
+  border-top: 1px solid var(--border);
   flex-shrink: 0;
   transition: color 0.15s;
 }
 
 .sidebar-toggle:hover {
-  color: #475569;
+  color: var(--neon-cyan);
 }
 
 .sidebar-toggle.collapsed {
@@ -439,13 +471,14 @@ body {
 .page-header h2 {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--neon-cyan);
   margin-bottom: 0.375rem;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
 }
 
 .page-header p {
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 0.938rem;
 }
 
@@ -458,56 +491,63 @@ body {
 }
 
 .stat-card {
-  background: white;
+  background: var(--surface);
   padding: 1.25rem;
   border-radius: 10px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--neon-cyan);
   transition: all 0.2s ease;
 }
 
 .stat-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-color: var(--border-mid);
+  box-shadow: var(--shadow-card);
 }
 
 .stat-label {
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.1em;
   margin-bottom: 0.625rem;
 }
 
 .stat-value {
   font-size: 2.25rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--neon-cyan);
   letter-spacing: -0.025em;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
 }
 
 .stat-card.warning .stat-value {
-  color: #ea580c;
+  color: var(--neon-yellow);
+  text-shadow: 0 0 10px rgba(255, 230, 0, 0.5);
 }
 
 .stat-card.success .stat-value {
-  color: #059669;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
 }
 
 .stat-card.danger .stat-value {
-  color: #dc2626;
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px rgba(255, 45, 120, 0.5);
 }
 
 .stat-card.info .stat-value {
-  color: #2563eb;
+  color: var(--neon-purple);
+  text-shadow: 0 0 10px rgba(180, 79, 255, 0.5);
 }
 
 /* Cards */
 .card {
-  background: white;
+  background: var(--surface);
   border-radius: 10px;
   padding: 1.25rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--neon-cyan);
   margin-bottom: 1.25rem;
 }
 
@@ -517,13 +557,13 @@ body {
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.875rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border);
 }
 
 .card-title {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--neon-cyan);
   letter-spacing: -0.025em;
 }
 
@@ -538,25 +578,25 @@ table {
 }
 
 thead {
-  background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
+  background: var(--surface-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 th {
   text-align: left;
   padding: 0.5rem 0.75rem;
   font-weight: 600;
-  color: #475569;
+  color: var(--neon-cyan);
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 td {
   padding: 0.5rem 0.75rem;
-  border-top: 1px solid #f1f5f9;
-  color: #334155;
+  border-top: 1px solid var(--border-soft);
+  color: var(--text-body);
   font-size: 0.875rem;
 }
 
@@ -565,7 +605,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background: #f8fafc;
+  background: rgba(0, 245, 255, 0.04);
 }
 
 /* Badges */
@@ -580,67 +620,77 @@ tbody tr:hover {
 }
 
 .badge.success {
-  background: #d1fae5;
-  color: #065f46;
+  background: #003320;
+  color: var(--neon-green);
+  border: 1px solid var(--neon-green);
 }
 
 .badge.warning {
-  background: #fed7aa;
-  color: #92400e;
+  background: #332200;
+  color: var(--neon-yellow);
+  border: 1px solid var(--neon-yellow);
 }
 
 .badge.danger {
-  background: #fecaca;
-  color: #991b1b;
+  background: #330011;
+  color: var(--neon-pink);
+  border: 1px solid var(--neon-pink);
 }
 
 .badge.info {
-  background: #dbeafe;
-  color: #1e40af;
+  background: #0d0033;
+  color: var(--neon-purple);
+  border: 1px solid var(--neon-purple);
 }
 
 .badge.increasing {
-  background: #d1fae5;
-  color: #065f46;
+  background: #003320;
+  color: var(--neon-green);
+  border: 1px solid var(--neon-green);
 }
 
 .badge.decreasing {
-  background: #fecaca;
-  color: #991b1b;
+  background: #330011;
+  color: var(--neon-pink);
+  border: 1px solid var(--neon-pink);
 }
 
 .badge.stable {
-  background: #e0e7ff;
-  color: #3730a3;
+  background: #001433;
+  color: #60a5fa;
+  border: 1px solid #60a5fa;
 }
 
 .badge.high {
-  background: #fecaca;
-  color: #991b1b;
+  background: #330011;
+  color: var(--neon-pink);
+  border: 1px solid var(--neon-pink);
 }
 
 .badge.medium {
-  background: #fed7aa;
-  color: #92400e;
+  background: #332200;
+  color: var(--neon-yellow);
+  border: 1px solid var(--neon-yellow);
 }
 
 .badge.low {
-  background: #dbeafe;
-  color: #1e40af;
+  background: #0d0033;
+  color: var(--neon-purple);
+  border: 1px solid var(--neon-purple);
 }
 
 /* Loading / error */
 .loading {
   text-align: center;
   padding: 3rem;
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 0.938rem;
 }
 
 .error {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #991b1b;
+  background: #1a0008;
+  border: 1px solid var(--neon-pink);
+  color: var(--neon-pink);
   padding: 1rem;
   border-radius: 8px;
   margin: 1rem 0;
